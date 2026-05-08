@@ -53,4 +53,7 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     Route::get('/pacientes/{id}/historial', [HistorialController::class, 'getHistorial'])->name('admin.pacientes.historial');
     Route::post('/pacientes/historial', [HistorialController::class, 'store'])->name('admin.pacientes.historial.store');
     Route::post('/pacientes/receta', [HistorialController::class, 'generarReceta'])->name('admin.pacientes.receta');
+
+    // Copia de Seguridad DB (1-Clic Backup)
+    Route::get('/backup', [AdminController::class, 'downloadBackup'])->name('admin.backup');
 });

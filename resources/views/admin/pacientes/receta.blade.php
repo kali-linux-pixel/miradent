@@ -69,8 +69,8 @@
                 <p class="text-xs text-slate-500 mt-1">C.D. Pamela Miranda - Colegiatura COP 12345</p>
             </div>
             <div class="text-right text-xs text-slate-400 space-y-0.5">
-                <p><i class="fa-solid fa-location-dot mr-1.5 text-jade"></i> Av. Principal 123, Miraflores</p>
-                <p><i class="fa-solid fa-phone mr-1.5 text-jade"></i> +51 948 097 148</p>
+                <p><i class="fa-solid fa-location-dot mr-1.5 text-jade"></i> Jr. Unión 637 P.J Miramar Alto, Chimbote</p>
+                <p><i class="fa-solid fa-phone mr-1.5 text-jade"></i> +51 990 353 982</p>
                 <p><i class="fa-solid fa-globe mr-1.5 text-jade"></i> www.miradent.pe</p>
             </div>
         </div>

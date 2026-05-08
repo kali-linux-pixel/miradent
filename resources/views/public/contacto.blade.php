@@ -43,7 +43,7 @@
                         </div>
                         <div>
                             <h4 class="text-slate-900 font-bold text-base">Dirección de la Clínica</h4>
-                            <p class="text-slate-500 text-sm mt-1">Av. Principal 123, Miraflores, Lima, Perú</p>
+                            <p class="text-slate-500 text-sm mt-1">Jr. Unión 637 P.J Miramar Alto, Chimbote, Perú</p>
                         </div>
                     </div>
 
@@ -54,7 +54,7 @@
                         </div>
                         <div>
                             <h4 class="text-slate-900 font-bold text-base">Teléfono de Reservas</h4>
-                            <p class="text-slate-500 text-sm mt-1">+51 948 097 148</p>
+                            <p class="text-slate-500 text-sm mt-1">+51 990 353 982</p>
                             <p class="text-slate-400 text-xs mt-0.5">Llamadas y WhatsApp</p>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
                     <p class="text-slate-600 text-sm">
                         Escríbenos directamente por WhatsApp haciendo clic abajo. Te responderemos en un par de minutos de forma atenta y profesional.
                     </p>
-                    <a href="https://wa.me/51948097148?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="w-full flex items-center justify-center bg-jade-500 text-white font-bold py-3.5 px-6 rounded-2xl hover:bg-jade-600 transition-all shadow-lg shadow-jade-500/10">
+                    <a href="https://wa.me/51990353982?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="w-full flex items-center justify-center bg-jade-500 text-white font-bold py-3.5 px-6 rounded-2xl hover:bg-jade-600 transition-all shadow-lg shadow-jade-500/10">
                         Chat directo con la doctora
                     </a>
                 </div>
@@ -121,7 +121,7 @@
                             </div>
                             <div class="space-y-2">
                                 <label for="phone" class="text-xs font-semibold text-slate-600 uppercase tracking-wider">Teléfono / WhatsApp</label>
-                                <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border border-jade-100 focus:outline-none focus:border-jade-500 focus:ring-1 focus:ring-jade-500 transition-all text-sm" placeholder="Ej. 948097148">
+                                <input type="tel" id="phone" required class="w-full px-4 py-3 rounded-xl border border-jade-100 focus:outline-none focus:border-jade-500 focus:ring-1 focus:ring-jade-500 transition-all text-sm" placeholder="Ej. 990353982">
                             </div>
                         </div>
                         <div class="space-y-2">
@@ -146,7 +146,7 @@
 
                 <!-- Mapa elegante -->
                 <div class="rounded-3xl overflow-hidden shadow-lg border border-jade-50 aspect-[16/9] bg-slate-50 relative">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31215.18485233285!2d-77.06206069999998!3d-12.046374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c866d92994e7%3A0x63351913c32e578!2sLima!5e0!3m2!1ses-419!2spe!4v1715130456123!5m2!1ses-419!2spe" class="w-full h-full border-none" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!3m2!1ses-419!2spe!4v1778213983897!5m2!1ses-419!2spe!6m8!1m7!1sxRhP5y-hfU_ohemVRddPGg!2m2!1d-9.07663113330762!2d-78.58231198920616!3f275.31663978875577!4f10.377144731231269!5f0.5053295476089491" class="w-full h-full border-none" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
 

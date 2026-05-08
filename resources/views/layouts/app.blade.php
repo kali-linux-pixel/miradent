@@ -92,7 +92,7 @@
                         Contacto
                     </a>
 
-                    <a href="https://wa.me/51948097148?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="bg-jade-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-jade-600 transition-all shadow-md shadow-jade-500/10 hover:shadow-lg hover:-translate-y-0.5">
+                    <a href="https://wa.me/51990353982?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="bg-jade-500 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-jade-600 transition-all shadow-md shadow-jade-500/10 hover:shadow-lg hover:-translate-y-0.5">
                         <i class="fa-brands fa-whatsapp mr-2 text-lg"></i>Reservar Cita
                     </a>
                 </nav>
@@ -130,7 +130,7 @@
                 </a>
 
                 <div class="pt-2">
-                    <a href="https://wa.me/51948097148?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="w-full flex items-center justify-center bg-jade-500 text-white px-4 py-3 rounded-xl text-base font-semibold hover:bg-jade-600 transition-all">
+                    <a href="https://wa.me/51990353982?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="w-full flex items-center justify-center bg-jade-500 text-white px-4 py-3 rounded-xl text-base font-semibold hover:bg-jade-600 transition-all">
                         <i class="fa-brands fa-whatsapp mr-2 text-xl"></i> Reservar por WhatsApp
                     </a>
                 </div>
@@ -167,7 +167,7 @@
                         <a href="#" class="w-9 h-9 rounded-full bg-jade-50 flex items-center justify-center text-jade-600 hover:bg-jade-500 hover:text-white transition-colors border border-jade-100">
                             <i class="fa-brands fa-instagram text-sm"></i>
                         </a>
-                        <a href="https://wa.me/51948097148" target="_blank" class="w-9 h-9 rounded-full bg-jade-50 flex items-center justify-center text-jade-600 hover:bg-jade-500 hover:text-white transition-colors border border-jade-100">
+                        <a href="https://wa.me/51990353982" target="_blank" class="w-9 h-9 rounded-full bg-jade-50 flex items-center justify-center text-jade-600 hover:bg-jade-500 hover:text-white transition-colors border border-jade-100">
                             <i class="fa-brands fa-whatsapp text-sm"></i>
                         </a>
                     </div>
@@ -200,11 +200,11 @@
                     <ul class="space-y-3.5 text-sm">
                         <li class="flex items-start space-x-3 text-slate-600">
                             <i class="fa-solid fa-location-dot mt-1 text-jade-500"></i>
-                            <span>Av. Principal 123, Miraflores, Lima</span>
+                            <span>Jr. Unión 637 P.J Miramar Alto, Chimbote</span>
                         </li>
                         <li class="flex items-center space-x-3 text-slate-600">
                             <i class="fa-solid fa-phone text-jade-500"></i>
-                            <span>+51 948 097 148</span>
+                            <span>+51 990 353 982</span>
                         </li>
                         <li class="flex items-center space-x-3 text-slate-600">
                             <i class="fa-solid fa-envelope text-jade-500"></i>
@@ -223,7 +223,7 @@
     </footer>
 
     <!-- Botón Flotante de WhatsApp -->
-    <a href="https://wa.me/51948097148?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#20ba5a] hover:scale-110 transition-all duration-300 group" aria-label="Contacto por WhatsApp">
+    <a href="https://wa.me/51990353982?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl hover:bg-[#20ba5a] hover:scale-110 transition-all duration-300 group" aria-label="Contacto por WhatsApp">
         <i class="fa-brands fa-whatsapp text-3xl"></i>
         <span class="absolute right-16 bg-white text-slate-800 font-semibold px-3 py-1 rounded-lg text-sm shadow-md whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 border border-slate-100">
             ¿Cómo te ayudamos?

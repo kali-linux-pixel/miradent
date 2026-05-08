@@ -63,27 +63,73 @@
         aside span, aside h5, aside h2 {
             color: #e6fcf4 !important;
         }
-        aside p {
+        aside p[class*="tracking-widest"] {
             color: #37eba5 !important;
+            font-weight: 800 !important;
+            font-size: 9px !important;
+            letter-spacing: 0.15em !important;
+            border-bottom: 1px solid rgba(0, 77, 50, 0.35) !important;
+            padding-bottom: 6px !important;
+            margin-top: 1.5rem !important;
+            opacity: 0.85 !important;
         }
         
         /* Links inactivos en el Sidebar */
         aside nav a {
             color: #cdfae9 !important;
+            border-left: 3px solid transparent !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
         aside nav a:hover {
-            background-color: #004d32 !important;
+            background-color: rgba(0, 77, 50, 0.45) !important;
             color: #37eba5 !important;
+            border-left-color: #00BB77 !important;
+            padding-left: 1rem !important;
         }
         
-        /* Link activo en el Sidebar - Verde Jade Brillante */
+        /* Link activo en el Sidebar - Verde Jade Brillante con Brillo de Neón */
         aside nav a[class*="bg-jade-950"] {
-            background-color: #00BB77 !important;
+            background: linear-gradient(135deg, #00BB77 0%, #008f5a 100%) !important;
             color: #FFFFFF !important;
             border-left: 4px solid #37eba5 !important;
+            box-shadow: 0 4px 20px -2px rgba(0, 187, 119, 0.45) !important;
+            font-weight: 700 !important;
+            transform: translateX(4px) !important;
         }
         aside nav a[class*="bg-jade-950"] i, aside nav a[class*="bg-jade-950"] span {
             color: #FFFFFF !important;
+        }
+        aside nav a[class*="bg-jade-950"]::after {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background-color: #37eba5;
+            border-radius: 50%;
+            margin-left: auto;
+            box-shadow: 0 0 10px #37eba5;
+            animation: pulse-dot 2s infinite;
+        }
+        @keyframes pulse-dot {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            50% { transform: scale(1.25); opacity: 1; box-shadow: 0 0 14px #37eba5; }
+            100% { transform: scale(0.9); opacity: 0.6; }
+        }
+        
+        /* Indicador de Estado Médico Online */
+        .doctor-avatar-container {
+            position: relative;
+        }
+        .doctor-avatar-container::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            right: -1px;
+            width: 10px;
+            height: 10px;
+            background-color: #37eba5;
+            border: 2px solid #002f1e;
+            border-radius: 50%;
+            box-shadow: 0 0 8px #37eba5;
         }
         
         /* Top Header - Blanco Suave */
@@ -223,22 +269,22 @@
                 <span>Agenda de Citas</span>
             </a>
 
-            <a href="{{ route('pagos.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all {{ Route::is('pagos.*') ? 'bg-jade-950 text-jade-400 font-semibold border-l-2 border-jade-50' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">
+            <a href="{{ route('pagos.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all {{ Route::is('pagos.*') ? 'bg-jade-950 text-jade-400 font-semibold border-l-2 border-jade-500' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">
                 <i class="fa-solid fa-file-invoice-dollar text-base"></i>
                 <span>Registro de Pagos</span>
             </a>
 
-            <a href="{{ route('gastos.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all {{ Route::is('gastos.*') ? 'bg-jade-950 text-jade-400 font-semibold border-l-2 border-jade-50' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">
+            <a href="{{ route('gastos.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all {{ Route::is('gastos.*') ? 'bg-jade-950 text-jade-400 font-semibold border-l-2 border-jade-500' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">
                 <i class="fa-solid fa-receipt text-base"></i>
                 <span>Registro de Gastos</span>
             </a>
 
             <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest px-3 pt-6 mb-2">Páginas Web</p>
-            <a href="{{ route('admin.galeria.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all {{ Route::is('admin.galeria.*') ? 'bg-jade-950 text-jade-400 font-semibold border-l-2 border-jade-50' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">
+            <a href="{{ route('admin.galeria.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all {{ Route::is('admin.galeria.*') ? 'bg-jade-950 text-jade-400 font-semibold border-l-2 border-jade-500' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">
                 <i class="fa-solid fa-camera-retro text-base"></i>
                 <span>Galería Antes/Desp</span>
             </a>
-            <a href="{{ route('admin.promociones.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all {{ Route::is('admin.promociones.*') ? 'bg-jade-950 text-jade-400 font-semibold border-l-2 border-jade-50' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">
+            <a href="{{ route('admin.promociones.index') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all {{ Route::is('admin.promociones.*') ? 'bg-jade-950 text-jade-400 font-semibold border-l-2 border-jade-500' : 'text-slate-400 hover:bg-slate-900 hover:text-white' }}">
                 <i class="fa-solid fa-gift text-base"></i>
                 <span>Promociones</span>
             </a>
@@ -246,17 +292,21 @@
                 <i class="fa-solid fa-globe text-base"></i>
                 <span>Ver Sitio Público</span>
             </a>
+            <a href="{{ route('admin.backup') }}" class="flex items-center space-x-3 px-3 py-2.5 rounded-xl text-sm text-amber-400 hover:bg-amber-950/40 hover:text-amber-300 transition-all border border-transparent hover:border-amber-900/30 font-semibold" title="Descargar Copia de Seguridad de la Base de Datos">
+                <i class="fa-solid fa-database text-base"></i>
+                <span>Copia de Seguridad</span>
+            </a>
         </nav>
 
         <!-- Doctor Profile Footer -->
         <div class="p-4 border-t border-vip-border bg-slate-950/40">
             <div class="flex items-center space-x-3 px-2 py-1.5 rounded-xl">
-                <div class="w-9 h-9 rounded-full bg-jade-800 flex items-center justify-center text-white font-bold text-sm">
+                <div class="doctor-avatar-container w-9 h-9 rounded-full bg-jade-800 flex items-center justify-center text-white font-bold text-sm relative">
                     DM
                 </div>
                 <div>
                     <h5 class="text-xs font-semibold text-white">Dra. Miradent</h5>
-                    <p class="text-[10px] text-slate-500">Administrador</p>
+                    <p class="text-[10px] text-slate-400">Administrador</p>
                 </div>
             </div>
         </div>
@@ -279,9 +329,58 @@
                 <span class="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-jade-950 text-jade-400 border border-jade-900">
                     <span class="w-1.5 h-1.5 bg-jade-400 rounded-full mr-1.5 animate-pulse"></span> Servidor Conectado
                 </span>
+                <!-- Centro de Notificaciones -->
+                <div class="relative inline-block text-left" id="notification-dropdown-container">
+                    <button onclick="toggleNotifications()" class="relative p-2.5 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl transition-all focus:outline-none flex items-center justify-center">
+                        <i class="fa-solid fa-bell text-base"></i>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-rose-500 rounded-full animate-ping"></span>
+                        <span class="absolute top-1 right-1 w-2 h-2 bg-rose-500 rounded-full"></span>
+                    </button>
+                    
+                    <!-- Menú de Notificaciones -->
+                    <div id="notification-menu" class="hidden absolute right-0 mt-2.5 w-80 bg-vip-panel border border-vip-border rounded-2xl shadow-2xl z-50 overflow-hidden py-1 divide-y divide-vip-border/10">
+                        <div class="px-4 py-2.5 bg-slate-900/50 flex items-center justify-between">
+                            <span class="text-xs font-bold text-white uppercase tracking-wider">Alertas de Hoy</span>
+                            <span class="px-2 py-0.5 rounded-full text-[9px] font-bold bg-rose-950/40 text-rose-400 border border-rose-900/50">3 Nuevas</span>
+                        </div>
+                        <div class="py-1 max-h-64 overflow-y-auto">
+                            <!-- Alerta 1 -->
+                            <div class="px-4 py-3 hover:bg-slate-900/10 transition-all flex items-start space-x-3 text-xs">
+                                <div class="w-7 h-7 rounded-lg bg-emerald-950/60 text-emerald-400 border border-emerald-900/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-calendar-check text-xs"></i>
+                                </div>
+                                <div class="space-y-0.5 min-w-0 flex-grow text-left">
+                                    <p class="font-semibold text-slate-800 truncate">Nueva Cita Programada</p>
+                                    <p class="text-slate-500 text-[10px]">Paciente: Juan Pérez (Hoy 4:30 PM)</p>
+                                </div>
+                            </div>
+                            <!-- Alerta 2 -->
+                            <div class="px-4 py-3 hover:bg-slate-900/10 transition-all flex items-start space-x-3 text-xs">
+                                <div class="w-7 h-7 rounded-lg bg-rose-950/60 text-rose-400 border border-rose-900/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-triangle-exclamation text-xs"></i>
+                                </div>
+                                <div class="space-y-0.5 min-w-0 flex-grow text-left">
+                                    <p class="font-semibold text-rose-400 truncate">Paciente Alérgico</p>
+                                    <p class="text-slate-500 text-[10px]">Alerta crítica registrada en la ficha.</p>
+                                </div>
+                            </div>
+                            <!-- Alerta 3 -->
+                            <div class="px-4 py-3 hover:bg-slate-900/10 transition-all flex items-start space-x-3 text-xs">
+                                <div class="w-7 h-7 rounded-lg bg-blue-950/60 text-blue-400 border border-blue-900/50 flex items-center justify-center flex-shrink-0 mt-0.5">
+                                    <i class="fa-solid fa-file-invoice-dollar text-xs"></i>
+                                </div>
+                                <div class="space-y-0.5 min-w-0 flex-grow text-left">
+                                    <p class="font-semibold text-slate-800 truncate">Balance de Caja Diario</p>
+                                    <p class="text-slate-500 text-[10px]">El reporte contable del día está listo.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <form action="{{ route('logout') }}" method="POST" class="inline">
                     @csrf
-                    <button type="submit" class="text-xs text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3.5 py-2 rounded-xl transition-colors">
+                    <button type="submit" class="text-xs text-slate-400 hover:text-white bg-slate-900 border border-slate-800 px-3.5 py-2.5 rounded-xl transition-colors">
                         <i class="fa-solid fa-arrow-right-from-bracket mr-1.5"></i> Salir
                     </button>
                 </form>
@@ -381,6 +480,21 @@
         mobileMenu.addEventListener('click', (e) => {
             if (e.target === mobileMenu) {
                 mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Toggle del menú de notificaciones
+        function toggleNotifications() {
+            const menu = document.getElementById('notification-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Cerrar menú de notificaciones al hacer clic fuera de él
+        document.addEventListener('click', (e) => {
+            const container = document.getElementById('notification-dropdown-container');
+            const menu = document.getElementById('notification-menu');
+            if (container && !container.contains(e.target) && menu) {
+                menu.classList.add('hidden');
             }
         });
     </script>

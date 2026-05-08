@@ -89,7 +89,7 @@
                     @forelse($pagosMes as $pago)
                         <tr>
                             <td class="py-2 font-medium text-slate-800">{{ $pago->paciente->nombre }}</td>
-                            <td class="py-2 text-slate-500">{{ \Carbon\Carbon::parse($pago->fecha)->format('d/m/Y') }}</td>
+                            <td class="py-2 text-slate-500">{{ \Carbon\Carbon::parse($pago->created_at)->format('d/m/Y') }}</td>
                             <td class="py-2 text-right font-semibold text-emerald-600">S/. {{ number_format($pago->monto, 2) }}</td>
                         </tr>
                     @empty
@@ -115,7 +115,7 @@
                 <tbody class="divide-y">
                     @forelse($gastosMes as $gasto)
                         <tr>
-                            <td class="py-2 font-medium text-slate-800">{{ $gasto->concepto }}</td>
+                            <td class="py-2 font-medium text-slate-800">{{ $gasto->descripcion }}</td>
                             <td class="py-2 text-slate-500">{{ \Carbon\Carbon::parse($gasto->fecha)->format('d/m/Y') }}</td>
                             <td class="py-2 text-right font-semibold text-amber-600">S/. {{ number_format($gasto->monto, 2) }}</td>
                         </tr>
@@ -175,7 +175,7 @@
                 @foreach($citasHoy as $cita)
                     @php
                         $horaCita = \Carbon\Carbon::parse($cita->fecha_hora)->format('h:i A');
-                        $telefonoLimpio = preg_replace('/[^0-9]/', '', $cita->paciente->telefono ?? '948097148');
+                        $telefonoLimpio = preg_replace('/[^0-9]/', '', $cita->paciente->telefono ?? '990353982');
                         if (strlen($telefonoLimpio) == 9) {
                             $telefonoLimpio = '51' . $telefonoLimpio;
                         }

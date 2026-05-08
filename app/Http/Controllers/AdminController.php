@@ -34,9 +34,18 @@ class AdminController extends Controller
             ->get();
 
         // Obtener detalles de pagos y gastos para el balance de contabilidad
-        $pagosMes = Pago::with('paciente')->orderBy('fecha', 'desc')->take(10)->get();
+        $pagosMes = Pago::with('paciente')->orderBy('created_at', 'desc')->take(10)->get();
         $gastosMes = Gasto::orderBy('fecha', 'desc')->take(10)->get();
 
         return view('admin.dashboard', compact('totalPacientes', 'totalCitas', 'totalRecaudado', 'totalGastos', 'citasRecientes', 'citasHoy', 'pagosMes', 'gastosMes'));
+    }
+
+    public function downloadBackup()
+    {
+        $dbPath = database_path('database.sqlite');
+        if (file_exists($dbPath)) {
+            return response()->download($dbPath, 'miradent_backup_' . date('Y_m_d_His') . '.sqlite');
+        }
+        return redirect()->back()->with('error', 'No se pudo encontrar la base de datos.');
     }
 }

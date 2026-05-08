@@ -111,7 +111,7 @@
                             </td>
                             <td class="px-4 py-4 text-right space-x-2">
                                 @php
-                                    $telefonoPaciente = $cita->paciente->telefono ?? '948097148';
+                                    $telefonoPaciente = $cita->paciente->telefono ?? '990353982';
                                     // Limpiar teléfono de caracteres raros y asegurar prefijo de país si no lo tiene
                                     $telefonoLimpio = preg_replace('/[^0-9]/', '', $telefonoPaciente);
                                     if (strlen($telefonoLimpio) === 9 && str_starts_with($telefonoLimpio, '9')) {

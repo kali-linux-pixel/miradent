@@ -29,7 +29,7 @@
                     En <strong class="text-slate-900 font-bold">Miradent</strong> combinamos arte, ciencia y una atención VIP para diseñar la sonrisa saludable que siempre has deseado. Reserva tu cita en menos de un minuto.
                 </p>
                 <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 pt-4">
-                    <a href="https://wa.me/51948097148?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="flex items-center justify-center bg-jade-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-jade-600 transition-all shadow-lg shadow-jade-500/20 hover:-translate-y-0.5">
+                    <a href="https://wa.me/51990353982?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="flex items-center justify-center bg-jade-500 text-white px-8 py-4 rounded-full font-semibold hover:bg-jade-600 transition-all shadow-lg shadow-jade-500/20 hover:-translate-y-0.5">
                         <i class="fa-brands fa-whatsapp mr-2.5 text-xl"></i> Agendar Cita por WhatsApp
                     </a>
                     <a href="{{ route('servicios') }}" class="flex items-center justify-center bg-transparent text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-semibold hover:bg-slate-50 transition-all">
@@ -200,7 +200,7 @@
             Haz clic abajo y solicita una evaluación completa hoy mismo. Atendemos consultas personalizadas y emergencias odontológicas.
         </p>
         <div class="pt-4">
-            <a href="https://wa.me/51948097148?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="inline-flex items-center justify-center bg-jade-500 text-white px-8 py-4 rounded-full font-bold hover:bg-jade-600 transition-all shadow-xl hover:-translate-y-0.5 text-base">
+            <a href="https://wa.me/51990353982?text=Hola,%20me%20gustaría%20agendar%20una%20cita%20en%20Miradent" target="_blank" class="inline-flex items-center justify-center bg-jade-500 text-white px-8 py-4 rounded-full font-bold hover:bg-jade-600 transition-all shadow-xl hover:-translate-y-0.5 text-base">
                 <i class="fa-brands fa-whatsapp mr-2.5 text-2xl"></i> Solicitar mi cita ahora
             </a>
         </div>
