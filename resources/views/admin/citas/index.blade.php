@@ -4,14 +4,14 @@
 @section('page_title', 'Agenda de Citas')
 
 @section('content')
-<div class="bg-vip-panel border border-vip-border rounded-3xl p-6 space-y-6">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-vip-border/50 pb-4">
+<div class="bg-vip-panel border border-[#cdfae9] rounded-3xl p-6 space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#cdfae9]/50 pb-4">
         <div>
-            <h4 class="text-base font-bold text-white font-serif">Listado de Citas Odontológicas</h4>
+            <h4 class="text-base font-bold text-[#002f1e] font-serif">Listado de Citas Odontológicas</h4>
             <p class="text-slate-500 text-xs mt-1">Planifica, edita, confirma o cancela las citas de los pacientes.</p>
         </div>
         @if($pacientes->isEmpty())
-            <span class="text-xs text-amber-400 bg-amber-950/40 border border-amber-900/40 px-4 py-2.5 rounded-xl font-medium">
+            <span class="text-xs text-amber-600 bg-amber-50 border border-amber-200 px-4 py-2.5 rounded-xl font-medium">
                 <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Primero registra un paciente
             </span>
         @else
@@ -22,12 +22,12 @@
     </div>
 
     <!-- Calendario Semanal Visual -->
-    <div class="print-card bg-slate-900/40 border border-vip-border/50 p-5 rounded-3xl space-y-4">
-        <div class="flex items-center space-x-2 border-b border-vip-border/50 pb-3">
-            <div class="w-7 h-7 bg-jade-950 rounded-lg flex items-center justify-center text-jade-400">
+    <div class="print-card bg-[#e6fcf4]/30 border border-[#cdfae9] p-5 rounded-3xl space-y-4">
+        <div class="flex items-center space-x-2 border-b border-[#cdfae9] pb-3">
+            <div class="w-7 h-7 bg-[#e6fcf4] rounded-lg flex items-center justify-center text-[#00BB77]">
                 <i class="fa-solid fa-calendar-days text-sm"></i>
             </div>
-            <h4 class="text-xs font-bold text-white uppercase tracking-wider">Distribución Semanal de la Agenda</h4>
+            <h4 class="text-xs font-bold text-[#002f1e] uppercase tracking-wider">Distribución Semanal de la Agenda</h4>
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-7 gap-3">
@@ -50,17 +50,17 @@
                     })->sortBy('fecha_hora');
                 @endphp
                 
-                <div class="bg-vip-panel border border-vip-border/40 p-3 rounded-2xl space-y-2 min-h-[140px] flex flex-col justify-start">
+                <div class="bg-white border border-[#cdfae9] p-3 rounded-2xl space-y-2 min-h-[140px] flex flex-col justify-start shadow-sm">
                     <div>
-                        <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest border-b border-vip-border/20 pb-1.5 text-center">{{ $nombreDia }}</p>
+                        <p class="text-[10px] font-bold text-[#00BB77] uppercase tracking-widest border-b border-[#e6fcf4] pb-1.5 text-center">{{ $nombreDia }}</p>
                         <div class="space-y-1.5 mt-2">
                             @if($citasDia->isEmpty())
-                                <p class="text-[9px] text-slate-600 italic text-center py-4">Libre</p>
+                                <p class="text-[9px] text-slate-400 italic text-center py-4">Libre</p>
                             @else
                                 @foreach($citasDia as $cDia)
-                                    <div class="bg-jade-950/50 border border-jade-900/50 p-1.5 rounded-xl text-[9px] space-y-0.5 shadow-sm">
-                                        <p class="font-bold text-jade-400 truncate" title="{{ $cDia->paciente->nombre }}">{{ $cDia->paciente->nombre }}</p>
-                                        <p class="text-slate-300 font-medium text-[8px]">{{ \Carbon\Carbon::parse($cDia->fecha_hora)->format('h:i A') }}</p>
+                                    <div class="bg-[#e6fcf4] border border-[#cdfae9] p-1.5 rounded-xl text-[9px] space-y-0.5 shadow-sm">
+                                        <p class="font-bold text-[#002f1e] truncate" title="{{ $cDia->paciente->nombre }}">{{ $cDia->paciente->nombre }}</p>
+                                        <p class="text-slate-600 font-medium text-[8px]">{{ \Carbon\Carbon::parse($cDia->fecha_hora)->format('h:i A') }}</p>
                                     </div>
                                 @endforeach
                             @endif
@@ -73,13 +73,13 @@
 
     @if($citas->isEmpty())
         <div class="text-center py-16 text-slate-500 space-y-4">
-            <i class="fa-solid fa-calendar-times text-5xl text-slate-800"></i>
+            <i class="fa-solid fa-calendar-times text-5xl text-slate-300"></i>
             <p class="text-sm">No se han agendado citas todavía.</p>
         </div>
     @else
         <div class="overflow-x-auto">
             <table class="w-full text-left text-sm text-slate-400">
-                <thead class="text-xs uppercase font-semibold text-slate-500 bg-slate-900/40 border-b border-vip-border/50">
+                <thead class="text-xs uppercase font-semibold text-slate-500 bg-[#e6fcf4] border-b border-[#cdfae9]">
                     <tr>
                         <th class="px-4 py-3">Paciente</th>
                         <th class="px-4 py-3">Servicio</th>
@@ -88,24 +88,24 @@
                         <th class="px-4 py-3 text-right">Acciones</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-vip-border/20">
+                <tbody class="divide-y divide-[#e6fcf4]/50">
                     @foreach($citas as $cita)
-                        <tr class="hover:bg-slate-900/10 transition-all">
-                            <td class="px-4 py-4 font-bold text-white">
+                        <tr class="hover:bg-[#e6fcf4]/30 transition-all">
+                            <td class="px-4 py-4 font-bold text-[#002f1e]">
                                 {{ $cita->paciente->nombre }}
                             </td>
-                            <td class="px-4 py-4 text-xs text-slate-300">
+                            <td class="px-4 py-4 text-xs text-[#005d3c] font-semibold">
                                 {{ $cita->servicio }}
                             </td>
-                            <td class="px-4 py-4 text-xs">
+                            <td class="px-4 py-4 text-xs text-slate-600">
                                 {{ \Carbon\Carbon::parse($cita->fecha_hora)->format('d/m/Y h:i A') }}
                             </td>
                             <td class="px-4 py-4 text-center">
-                                <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold border 
-                                    @if($cita->estado == 'Confirmada') bg-emerald-950/60 text-emerald-400 border-emerald-900/60
-                                    @elseif($cita->estado == 'Pendiente') bg-amber-950/60 text-amber-400 border-amber-900/60
-                                    @else bg-red-950/60 text-red-400 border-red-900/60
-                                    @endif uppercase tracking-wider">
+                                <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold border 
+                                    @if($cita->estado == 'Confirmada') bg-[#e6fcf4] text-[#00BB77] border-[#cdfae9]
+                                    @elseif($cita->estado == 'Pendiente') bg-amber-50 text-amber-600 border-amber-200
+                                    @else bg-rose-50 text-rose-600 border-rose-200
+                                    @endif uppercase tracking-wider shadow-sm">
                                     {{ $cita->estado }}
                                 </span>
                             </td>

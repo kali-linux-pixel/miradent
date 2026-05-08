@@ -4,10 +4,10 @@
 @section('page_title', 'Registro de Gastos')
 
 @section('content')
-<div class="bg-vip-panel border border-vip-border rounded-3xl p-6 space-y-6">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-vip-border/50 pb-4">
+<div class="bg-vip-panel border border-[#cdfae9] rounded-3xl p-6 space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#cdfae9]/50 pb-4">
         <div>
-            <h4 class="text-base font-bold text-white font-serif">Listado de Gastos de la Clínica</h4>
+            <h4 class="text-base font-bold text-[#002f1e] font-serif">Listado de Gastos de la Clínica</h4>
             <p class="text-slate-500 text-xs mt-1">Registra y administra los egresos, materiales comprados y costos operativos.</p>
         </div>
         <button onclick="toggleModal('modal-create', true)" class="bg-jade-600 text-white px-5 py-2.5 rounded-xl text-sm font-semibold hover:bg-jade-500 transition-all flex items-center justify-center space-x-2">
@@ -17,13 +17,13 @@
 
     @if($gastos->isEmpty())
         <div class="text-center py-16 text-slate-500 space-y-4">
-            <i class="fa-solid fa-file-invoice text-5xl text-slate-800"></i>
+            <i class="fa-solid fa-file-invoice text-5xl text-slate-300"></i>
             <p class="text-sm">Aún no se han registrado gastos. Haz clic arriba para registrar el primero.</p>
         </div>
     @else
         <div class="overflow-x-auto">
             <table class="w-full text-left text-sm text-slate-400">
-                <thead class="text-xs uppercase font-semibold text-slate-500 bg-slate-900/40 border-b border-vip-border/50">
+                <thead class="text-xs uppercase font-semibold text-slate-500 bg-[#e6fcf4] border-b border-[#cdfae9]">
                     <tr>
                         <th class="px-4 py-3">Descripción / Detalle</th>
                         <th class="px-4 py-3">Fecha de Pago</th>
@@ -31,16 +31,16 @@
                         <th class="px-4 py-3 text-right">Acciones</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-vip-border/20">
+                <tbody class="divide-y divide-[#e6fcf4]/50">
                     @foreach($gastos as $gasto)
-                        <tr class="hover:bg-slate-900/10 transition-all">
-                            <td class="px-4 py-4 font-bold text-white">
+                        <tr class="hover:bg-[#e6fcf4]/30 transition-all">
+                            <td class="px-4 py-4 font-bold text-[#002f1e]">
                                 {{ $gasto->descripcion }}
                             </td>
-                            <td class="px-4 py-4 text-xs text-slate-300">
+                            <td class="px-4 py-4 text-xs text-slate-600">
                                 {{ \Carbon\Carbon::parse($gasto->fecha)->format('d/m/Y') }}
                             </td>
-                            <td class="px-4 py-4 text-right text-xs font-semibold text-amber-500">
+                            <td class="px-4 py-4 text-right text-xs font-semibold text-amber-600">
                                 S/. {{ number_format($gasto->monto, 2) }}
                             </td>
                             <td class="px-4 py-4 text-right">

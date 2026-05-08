@@ -4,14 +4,14 @@
 @section('page_title', 'Registro de Pagos')
 
 @section('content')
-<div class="bg-vip-panel border border-vip-border rounded-3xl p-6 space-y-6">
-    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-vip-border/50 pb-4">
+<div class="bg-vip-panel border border-[#cdfae9] rounded-3xl p-6 space-y-6">
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-[#cdfae9]/50 pb-4">
         <div>
-            <h4 class="text-base font-bold text-white font-serif">Historial de Pagos Recibidos</h4>
+            <h4 class="text-base font-bold text-[#002f1e] font-serif">Historial de Pagos Recibidos</h4>
             <p class="text-slate-500 text-xs mt-1">Lleva un control financiero preciso de las transacciones de tus pacientes.</p>
         </div>
         @if($pacientes->isEmpty())
-            <span class="text-xs text-amber-400 bg-amber-950/40 border border-amber-900/40 px-4 py-2.5 rounded-xl font-medium">
+            <span class="text-xs text-amber-600 bg-amber-50 border border-amber-200 px-4 py-2.5 rounded-xl font-medium">
                 <i class="fa-solid fa-triangle-exclamation mr-1.5"></i> Primero registra un paciente
             </span>
         @else
@@ -23,13 +23,13 @@
 
     @if($pagos->isEmpty())
         <div class="text-center py-16 text-slate-500 space-y-4">
-            <i class="fa-solid fa-receipt text-5xl text-slate-800"></i>
+            <i class="fa-solid fa-receipt text-5xl text-slate-300"></i>
             <p class="text-sm">No se han registrado transacciones financieras todavía.</p>
         </div>
     @else
         <div class="overflow-x-auto">
             <table class="w-full text-left text-sm text-slate-400">
-                <thead class="text-xs uppercase font-semibold text-slate-500 bg-slate-900/40 border-b border-vip-border/50">
+                <thead class="text-xs uppercase font-semibold text-slate-500 bg-[#e6fcf4] border-b border-[#cdfae9]">
                     <tr>
                         <th class="px-4 py-3">Paciente</th>
                         <th class="px-4 py-3">Monto Cancelado</th>
@@ -38,36 +38,36 @@
                         <th class="px-4 py-3 text-right">Acciones</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-vip-border/20">
+                <tbody class="divide-y divide-[#e6fcf4]/50">
                     @foreach($pagos as $pago)
-                        <tr class="hover:bg-slate-900/10 transition-all">
-                            <td class="px-4 py-4 font-bold text-white">
+                        <tr class="hover:bg-[#e6fcf4]/30 transition-all">
+                            <td class="px-4 py-4 font-bold text-[#002f1e]">
                                 {{ $pago->paciente->nombre }}
                             </td>
-                            <td class="px-4 py-4 text-xs font-bold text-jade-400">
+                            <td class="px-4 py-4 text-xs font-bold text-[#00BB77]">
                                 S/. {{ number_format($pago->monto, 2) }}
                             </td>
-                            <td class="px-4 py-4 text-xs capitalize text-slate-300">
+                            <td class="px-4 py-4 text-xs capitalize text-slate-700 font-semibold">
                                 <span class="inline-flex items-center space-x-1.5">
                                     @if($pago->metodo_pago == 'efectivo')
-                                        <i class="fa-solid fa-money-bill text-emerald-500"></i>
+                                        <i class="fa-solid fa-money-bill text-[#00BB77]"></i>
                                     @else
-                                        <i class="fa-solid fa-building-columns text-sky-500"></i>
+                                        <i class="fa-solid fa-building-columns text-sky-600"></i>
                                     @endif
                                     <span>{{ $pago->metodo_pago }}</span>
                                 </span>
                             </td>
-                            <td class="px-4 py-4 text-xs">
+                            <td class="px-4 py-4 text-xs text-slate-600">
                                 {{ \Carbon\Carbon::parse($pago->created_at)->format('d/m/Y h:i A') }}
                             </td>
                             <td class="px-4 py-4 text-right space-x-2">
-                                <button onclick="openEditModal({{ json_encode($pago) }})" class="p-1.5 bg-slate-900 text-slate-400 hover:text-jade-400 hover:bg-jade-950/40 rounded-lg transition-all" title="Editar registro de pago">
+                                <button onclick="openEditModal({{ json_encode($pago) }})" class="p-1.5 bg-slate-50 text-slate-500 hover:text-jade-500 hover:bg-jade-50 rounded-lg transition-all border border-jade-100 shadow-sm" title="Editar registro de pago">
                                     <i class="fa-solid fa-pen-to-square"></i>
                                 </button>
                                 <form action="{{ route('pagos.destroy', $pago->id) }}" method="POST" class="inline-block" onsubmit="return confirm('¿Seguro que deseas eliminar este registro de pago permanentemente?');">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="p-1.5 bg-slate-900 text-slate-400 hover:text-red-400 hover:bg-red-950/40 rounded-lg transition-all" title="Eliminar registro de pago">
+                                    <button type="submit" class="p-1.5 bg-slate-50 text-slate-500 hover:text-rose-500 hover:bg-rose-50 rounded-lg transition-all border border-rose-100 shadow-sm" title="Eliminar registro de pago">
                                         <i class="fa-solid fa-trash-can"></i>
                                     </button>
                                 </form>

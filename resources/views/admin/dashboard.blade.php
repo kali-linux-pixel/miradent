@@ -207,13 +207,13 @@
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
     
     <!-- Tarjeta 1: Total Pacientes -->
-    <div class="print-card bg-vip-panel border border-vip-border p-6 rounded-3xl relative overflow-hidden flex items-center justify-between">
+    <div class="print-card bg-vip-panel border border-[#cdfae9] p-6 rounded-3xl relative overflow-hidden flex items-center justify-between shadow-sm">
         <div class="space-y-2">
             <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Pacientes Nuevos</p>
-            <h3 class="text-3xl font-bold text-white font-serif">{{ $totalPacientes }}</h3>
-            <p class="text-[10px] text-jade-500 font-medium"><i class="fa-solid fa-arrow-trend-up mr-1"></i> Registrados en la clínica</p>
+            <h3 class="text-3xl font-bold text-[#002f1e] font-serif">{{ $totalPacientes }}</h3>
+            <p class="text-[10px] text-[#00BB77] font-medium"><i class="fa-solid fa-arrow-trend-up mr-1"></i> Registrados en la clínica</p>
         </div>
-        <div class="no-print w-12 h-12 bg-jade-950 rounded-2xl flex items-center justify-center text-jade-400 border border-jade-900/40 flex-shrink-0">
+        <div class="no-print w-12 h-12 bg-[#e6fcf4] rounded-2xl flex items-center justify-center text-[#00BB77] border border-[#cdfae9] flex-shrink-0">
             <i class="fa-solid fa-user-injured text-xl"></i>
         </div>
         <!-- Decoración -->
@@ -221,13 +221,13 @@
     </div>
 
     <!-- Tarjeta 2: Total Citas -->
-    <div class="print-card bg-vip-panel border border-vip-border p-6 rounded-3xl relative overflow-hidden flex items-center justify-between">
+    <div class="print-card bg-vip-panel border border-[#cdfae9] p-6 rounded-3xl relative overflow-hidden flex items-center justify-between shadow-sm">
         <div class="space-y-2">
             <p class="text-xs font-bold text-slate-500 uppercase tracking-widest">Citas Agendadas</p>
-            <h3 class="text-3xl font-bold text-white font-serif">{{ $totalCitas }}</h3>
-            <p class="text-[10px] text-jade-500 font-medium"><i class="fa-solid fa-clock mr-1"></i> Total de consultas</p>
+            <h3 class="text-3xl font-bold text-[#002f1e] font-serif">{{ $totalCitas }}</h3>
+            <p class="text-[10px] text-[#00BB77] font-medium"><i class="fa-solid fa-clock mr-1"></i> Total de consultas</p>
         </div>
-        <div class="no-print w-12 h-12 bg-jade-950 rounded-2xl flex items-center justify-center text-jade-400 border border-jade-900/40 flex-shrink-0">
+        <div class="no-print w-12 h-12 bg-[#e6fcf4] rounded-2xl flex items-center justify-center text-[#00BB77] border border-[#cdfae9] flex-shrink-0">
             <i class="fa-solid fa-calendar-check text-xl"></i>
         </div>
         <!-- Decoración -->
@@ -235,13 +235,13 @@
     </div>
 
     <!-- Tarjeta 3: Total Recaudado -->
-    <div class="print-card bg-vip-panel border border-vip-border p-6 rounded-3xl relative overflow-hidden flex items-center justify-between">
+    <div class="print-card bg-vip-panel border border-[#cdfae9] p-6 rounded-3xl relative overflow-hidden flex items-center justify-between shadow-sm">
         <div class="space-y-2">
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest text-jade-400">Ingresos Brutos</p>
-            <h3 class="text-2xl font-bold text-white font-serif">S/. {{ number_format($totalRecaudado, 2) }}</h3>
-            <p class="text-[10px] text-jade-500 font-medium"><i class="fa-solid fa-sack-dollar mr-1"></i> Pagos Registrados</p>
+            <p class="text-xs font-bold text-[#00BB77] uppercase tracking-widest">Ingresos Brutos</p>
+            <h3 class="text-2xl font-bold text-[#002f1e] font-serif">S/. {{ number_format($totalRecaudado, 2) }}</h3>
+            <p class="text-[10px] text-[#00BB77] font-medium"><i class="fa-solid fa-sack-dollar mr-1"></i> Pagos Registrados</p>
         </div>
-        <div class="no-print w-12 h-12 bg-jade-950 rounded-2xl flex items-center justify-center text-jade-400 border border-jade-900/40 flex-shrink-0">
+        <div class="no-print w-12 h-12 bg-[#e6fcf4] rounded-2xl flex items-center justify-center text-[#00BB77] border border-[#cdfae9] flex-shrink-0">
             <i class="fa-solid fa-file-invoice-dollar text-xl"></i>
         </div>
         <!-- Decoración -->
@@ -249,13 +249,13 @@
     </div>
 
     <!-- Tarjeta 4: Total Gastos -->
-    <div class="print-card bg-vip-panel border border-vip-border p-6 rounded-3xl relative overflow-hidden flex items-center justify-between">
+    <div class="print-card bg-vip-panel border border-[#cdfae9] p-6 rounded-3xl relative overflow-hidden flex items-center justify-between shadow-sm">
         <div class="space-y-2">
-            <p class="text-xs font-bold text-slate-500 uppercase tracking-widest text-amber-500">Gastos Realizados</p>
-            <h3 class="text-2xl font-bold text-white font-serif">S/. {{ number_format($totalGastos, 2) }}</h3>
-            <p class="text-[10px] text-amber-500 font-medium"><i class="fa-solid fa-receipt mr-1"></i> Egresos Registrados</p>
+            <p class="text-xs font-bold text-amber-600 uppercase tracking-widest">Gastos Realizados</p>
+            <h3 class="text-2xl font-bold text-amber-600 font-serif">S/. {{ number_format($totalGastos, 2) }}</h3>
+            <p class="text-[10px] text-amber-600 font-medium"><i class="fa-solid fa-receipt mr-1"></i> Egresos Registrados</p>
         </div>
-        <div class="no-print w-12 h-12 bg-amber-950/60 rounded-2xl flex items-center justify-center text-amber-400 border border-amber-900/40 flex-shrink-0">
+        <div class="no-print w-12 h-12 bg-amber-50 rounded-2xl flex items-center justify-center text-amber-600 border border-amber-200 flex-shrink-0">
             <i class="fa-solid fa-receipt text-xl"></i>
         </div>
         <!-- Decoración -->
