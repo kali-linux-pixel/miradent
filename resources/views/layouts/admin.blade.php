@@ -191,12 +191,17 @@
         /* Inputs y Formularios */
         input, select, textarea {
             background-color: #FFFFFF !important;
-            color: #002f1e !important;
-            border: 1px solid #cdfae9 !important;
+            color: #0f172a !important;
+            border: 1px solid #cbd5e1 !important;
+            border-radius: 14px !important;
+            padding: 10px 14px !important;
+            font-size: 13px !important;
+            transition: all 0.25s ease-in-out !important;
         }
         input:focus, select:focus, textarea:focus {
             border-color: #00BB77 !important;
-            box-shadow: 0 0 0 1px #00BB77 !important;
+            box-shadow: 0 0 0 4px rgba(0, 187, 119, 0.12) !important;
+            outline: none !important;
         }
         
         /* Botones de Acción */
@@ -208,16 +213,63 @@
             background-color: #00a368 !important;
         }
         
-        /* Modales */
+        /* Modales Premium de Lujo */
         div[id^="modal-"] > div {
             background-color: #FFFFFF !important;
-            border-color: #cdfae9 !important;
+            border: 1px solid #f1f5f9 !important;
+            border-radius: 28px !important;
+            box-shadow: 0 25px 50px -12px rgba(0, 187, 119, 0.15) !important;
+            overflow: hidden !important;
+        }
+        div[id^="modal-"] .bg-slate-900\/50 {
+            background-color: #f8fafc !important;
+            border-bottom: 1px solid #f1f5f9 !important;
+            padding: 20px 24px !important;
+            height: auto !important;
         }
         div[id^="modal-"] h3 {
-            color: #002f1e !important;
+            font-family: 'Playfair Display', serif !important;
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            color: #0f172a !important;
+            letter-spacing: -0.02em !important;
         }
         div[id^="modal-"] label {
-            color: #005d3c !important;
+            font-size: 11px !important;
+            font-weight: 700 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.05em !important;
+            color: #475569 !important;
+        }
+        div[id^="modal-"] button[type="submit"] {
+            background: linear-gradient(135deg, #00BB77, #00a368) !important;
+            border-radius: 14px !important;
+            padding: 10px 22px !important;
+            font-size: 13px !important;
+            font-weight: 600 !important;
+            color: #FFFFFF !important;
+            box-shadow: 0 4px 12px rgba(0, 187, 119, 0.15) !important;
+            transition: all 0.25s ease !important;
+            border: none !important;
+        }
+        div[id^="modal-"] button[type="submit"]:hover {
+            background: linear-gradient(135deg, #00a368, #008c5a) !important;
+            transform: translateY(-1px) !important;
+            box-shadow: 0 6px 16px rgba(0, 187, 119, 0.25) !important;
+        }
+        div[id^="modal-"] button[type="button"] {
+            background-color: #f8fafc !important;
+            border: 1px solid #e2e8f0 !important;
+            color: #64748b !important;
+            border-radius: 14px !important;
+            padding: 10px 22px !important;
+            font-size: 13px !important;
+            font-weight: 500 !important;
+            transition: all 0.25s ease !important;
+        }
+        div[id^="modal-"] button[type="button"]:hover {
+            background-color: #f1f5f9 !important;
+            color: #334155 !important;
         }
         
         /* Iconos de las tarjetas de Dashboard */
