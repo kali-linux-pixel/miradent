@@ -10,7 +10,7 @@ class Paciente extends Model
     use HasFactory;
 
     // Definir los campos que se pueden llenar
-    protected $fillable = ['nombre', 'edad', 'telefono', 'direccion', 'alergias'];
+    protected $fillable = ['nombre', 'edad', 'telefono', 'direccion', 'alergias', 'alergico'];
 
     // Relación con citas
     public function citas()

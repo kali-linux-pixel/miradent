@@ -29,7 +29,10 @@ class PacienteController extends Controller
             'alergias' => 'nullable|string',
         ]);
 
-        Paciente::create($request->all());
+        $data = $request->all();
+        $data['alergico'] = $request->has('alergico') ? 1 : 0;
+
+        Paciente::create($data);
 
         return redirect()->route('pacientes.index')->with('success', 'Paciente registrado correctamente.');
     }
@@ -48,7 +51,11 @@ class PacienteController extends Controller
         ]);
 
         $paciente = Paciente::findOrFail($id);
-        $paciente->update($request->all());
+        
+        $data = $request->all();
+        $data['alergico'] = $request->has('alergico') ? 1 : 0;
+
+        $paciente->update($data);
 
         return redirect()->route('pacientes.index')->with('success', 'Paciente actualizado correctamente.');
     }

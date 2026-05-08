@@ -20,6 +20,7 @@ class CrearPacientesTabla extends Migration
             $table->string('telefono');
             $table->string('direccion');
             $table->text('alergias')->nullable();
+            $table->boolean('alergico')->default(false);
             $table->timestamps(); // created_at y updated_at
         });
     }

@@ -37,7 +37,8 @@
                         <th class="px-4 py-3">Edad</th>
                         <th class="px-4 py-3">Teléfono</th>
                         <th class="px-4 py-3">Dirección</th>
-                        <th class="px-4 py-3">Alergias</th>
+                        <th class="px-4 py-3">Alérgico</th>
+                        <th class="px-4 py-3">Alergias/Observaciones</th>
                         <th class="px-4 py-3 text-right">Acciones</th>
                     </tr>
                 </thead>
@@ -55,6 +56,17 @@
                             </td>
                             <td class="px-4 py-4 text-xs truncate max-w-[200px]">
                                 {{ $paciente->direccion }}
+                            </td>
+                            <td class="px-4 py-4 text-xs">
+                                @if($paciente->alergico)
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-950/40 text-rose-400 border border-rose-900/50">
+                                        <i class="fa-solid fa-triangle-exclamation mr-1 animate-pulse"></i> SÍ
+                                    </span>
+                                @else
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-950/40 text-emerald-400 border border-emerald-900/50">
+                                        <i class="fa-solid fa-circle-check mr-1"></i> NO
+                                    </span>
+                                @endif
                             </td>
                             <td class="px-4 py-4 text-xs max-w-[150px] truncate">
                                 <span class="px-2 py-0.5 rounded {{ $paciente->alergias ? 'bg-red-950/30 text-red-400 border border-red-900/30' : 'bg-slate-900 text-slate-500' }}">
@@ -119,6 +131,13 @@
                 <input type="text" name="direccion" required class="w-full bg-slate-900 border border-vip-border text-slate-200 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-jade-600" placeholder="Ej. Av. Larco 456, Miraflores">
             </div>
             <div class="space-y-1.5">
+                <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">¿Es Alérgico?</label>
+                <select name="alergico" class="w-full bg-slate-900 border border-vip-border text-slate-200 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-jade-600">
+                    <option value="0" style="color: #10b981; font-weight: bold;">NO (Paciente sin Alergias conocidas)</option>
+                    <option value="1" style="color: #ef4444; font-weight: bold;">SÍ (Paciente Alérgico)</option>
+                </select>
+            </div>
+            <div class="space-y-1.5">
                 <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Alergias o Observaciones Médicas (Opcional)</label>
                 <textarea name="alergias" rows="3" class="w-full bg-slate-900 border border-vip-border text-slate-200 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-jade-600" placeholder="Indicar alergias a medicamentos como la penicilina, asma, etc."></textarea>
             </div>
@@ -159,6 +178,13 @@
                 <input type="text" id="edit-direccion" name="direccion" required class="w-full bg-slate-900 border border-vip-border text-slate-200 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-jade-600">
             </div>
             <div class="space-y-1.5">
+                <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">¿Es Alérgico?</label>
+                <select id="edit-alergico" name="alergico" class="w-full bg-slate-900 border border-vip-border text-slate-200 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-jade-600">
+                    <option value="0" style="color: #10b981; font-weight: bold;">NO (Paciente sin Alergias conocidas)</option>
+                    <option value="1" style="color: #ef4444; font-weight: bold;">SÍ (Paciente Alérgico)</option>
+                </select>
+            </div>
+            <div class="space-y-1.5">
                 <label class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Alergias o Observaciones Médicas</label>
                 <textarea id="edit-alergias" name="alergias" rows="3" class="w-full bg-slate-900 border border-vip-border text-slate-200 text-sm rounded-xl px-4 py-2.5 focus:outline-none focus:border-jade-600"></textarea>
             </div>
@@ -187,6 +213,7 @@
         document.getElementById('edit-telefono').value = paciente.telefono;
         document.getElementById('edit-direccion').value = paciente.direccion;
         document.getElementById('edit-alergias').value = paciente.alergias ?? '';
+        document.getElementById('edit-alergico').value = paciente.alergico ? '1' : '0';
         
         // Asignar ruta de actualización dinámica
         const form = document.getElementById('form-edit');
