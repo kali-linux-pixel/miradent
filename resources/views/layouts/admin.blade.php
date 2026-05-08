@@ -284,8 +284,63 @@
             background-color: #FFFFFF !important;
             border-color: #e6fcf4 !important;
         }
-        .bg-slate-900\/50:hover {
-            background-color: #e6fcf4 !important;
+        /* Estilos de Modo Oscuro Ejecutivo */
+        body.dark-theme {
+            background-color: #020617 !important;
+            color: #f1f5f9 !important;
+        }
+        body.dark-theme main {
+            background-color: #0b0f19 !important;
+        }
+        body.dark-theme .bg-white {
+            background-color: #0f172a !important;
+        }
+        body.dark-theme .bg-vip-panel {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        body.dark-theme h1, body.dark-theme h2, body.dark-theme h3, body.dark-theme h4, body.dark-theme h5, body.dark-theme p, body.dark-theme span, body.dark-theme td, body.dark-theme th {
+            color: #f8fafc !important;
+        }
+        body.dark-theme table {
+            background-color: #1e293b !important;
+        }
+        body.dark-theme thead {
+            background-color: #0f172a !important;
+        }
+        body.dark-theme tbody td {
+            color: #e2e8f0 !important;
+            border-color: #334155 !important;
+        }
+        body.dark-theme tbody tr:hover {
+            background-color: rgba(30, 41, 59, 0.5) !important;
+        }
+        body.dark-theme input, body.dark-theme select, body.dark-theme textarea {
+            background-color: #1e293b !important;
+            color: #f8fafc !important;
+            border-color: #475569 !important;
+        }
+        body.dark-theme div[id^="modal-"] > div {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        body.dark-theme div[id^="modal-"] .bg-slate-900\/50 {
+            background-color: #0f172a !important;
+            border-color: #334155 !important;
+        }
+        body.dark-theme .bg-slate-900\/50 {
+            background-color: #1e293b !important;
+            border-color: #334155 !important;
+        }
+        body.dark-theme .bg-slate-900\/50:hover {
+            background-color: #334155 !important;
+        }
+        @keyframes spin-slow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 8s linear infinite;
         }
     </style>
 </head>
@@ -381,6 +436,10 @@
                 <span class="hidden sm:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-jade-950 text-jade-400 border border-jade-900">
                     <span class="w-1.5 h-1.5 bg-jade-400 rounded-full mr-1.5 animate-pulse"></span> Servidor Conectado
                 </span>
+                <!-- Interruptor de Tema (Dark Mode / Light Mode Ejecutivo) -->
+                <button onclick="toggleDarkMode()" id="dark-mode-toggle-btn" class="p-2.5 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl transition-all focus:outline-none flex items-center justify-center" title="Cambiar Tema (Claro / Oscuro)">
+                    <i id="dark-mode-icon" class="fa-solid fa-moon text-base"></i>
+                </button>
                 <!-- Centro de Notificaciones -->
                 <div class="relative inline-block text-left" id="notification-dropdown-container">
                     <button onclick="toggleNotifications()" class="relative p-2.5 text-slate-400 hover:text-white bg-slate-900 border border-slate-800 rounded-xl transition-all focus:outline-none flex items-center justify-center">
@@ -547,6 +606,33 @@
             const menu = document.getElementById('notification-menu');
             if (container && !container.contains(e.target) && menu) {
                 menu.classList.add('hidden');
+            }
+        });
+
+        // Lógica de Modo Oscuro Ejecutivo
+        function toggleDarkMode() {
+            const isDark = document.body.classList.toggle('dark-theme');
+            localStorage.setItem('admin-dark-mode', isDark ? 'enabled' : 'disabled');
+            updateDarkModeIcon(isDark);
+        }
+
+        function updateDarkModeIcon(isDark) {
+            const icon = document.getElementById('dark-mode-icon');
+            if (icon) {
+                if (isDark) {
+                    icon.className = 'fa-solid fa-sun text-base text-amber-400 animate-spin-slow';
+                } else {
+                    icon.className = 'fa-solid fa-moon text-base';
+                }
+            }
+        }
+
+        // Cargar preferencia guardada de Modo Oscuro
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedMode = localStorage.getItem('admin-dark-mode');
+            if (savedMode === 'enabled') {
+                document.body.classList.add('dark-theme');
+                updateDarkModeIcon(true);
             }
         });
     </script>

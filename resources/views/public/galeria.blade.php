@@ -40,21 +40,23 @@
                         
                         <!-- Contenedor Comparativa Antes/Después o Foto Única -->
                         @if($caso->foto_despues)
-                            <div class="grid grid-cols-2 gap-4 relative">
-                                <!-- Foto Antes -->
-                                <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-50 border border-jade-50">
-                                    <img src="{{ (str_starts_with($caso->foto_antes, 'http')) ? $caso->foto_antes : asset($caso->foto_antes) }}" class="w-full h-full object-cover" alt="Antes - {{ $caso->titulo }}">
-                                    <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md">
-                                        Antes
-                                    </span>
+                            <!-- Comparador Interactivo con Deslizador de Arrastre -->
+                            <div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden select-none border border-jade-100 group cursor-ew-resize comparison-slider-container" id="slider-{{ $caso->id }}">
+                                <!-- Foto Después (Base) -->
+                                <img src="{{ (str_starts_with($caso->foto_despues, 'http')) ? $caso->foto_despues : asset($caso->foto_despues) }}" class="absolute inset-0 w-full h-full object-cover pointer-events-none" alt="Después">
+                                <span class="absolute top-3 right-3 bg-jade-500 text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md shadow-md z-10 pointer-events-none">Después</span>
+
+                                <!-- Foto Antes (Capa Superior Deslizable) -->
+                                <div class="absolute inset-y-0 left-0 overflow-hidden slider-overlay" style="width: 50%">
+                                    <img src="{{ (str_starts_with($caso->foto_antes, 'http')) ? $caso->foto_antes : asset($caso->foto_antes) }}" class="absolute inset-0 w-full h-full object-cover pointer-events-none max-w-none slider-before-img" alt="Antes">
+                                    <span class="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-sm text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md z-10 pointer-events-none">Antes</span>
                                 </div>
 
-                                <!-- Foto Después -->
-                                <div class="relative rounded-2xl overflow-hidden aspect-[4/3] bg-slate-50 border border-jade-100">
-                                    <img src="{{ (str_starts_with($caso->foto_despues, 'http')) ? $caso->foto_despues : asset($caso->foto_despues) }}" class="w-full h-full object-cover" alt="Después - {{ $caso->titulo }}">
-                                    <span class="absolute top-3 left-3 bg-jade-500 text-white text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-md shadow-md">
-                                        Después
-                                    </span>
+                                <!-- Barra Separadora y Botón de Arrastre -->
+                                <div class="absolute inset-y-0 w-1 bg-white flex items-center justify-center z-20 shadow-2xl slider-handle" style="left: 50%">
+                                    <div class="w-8 h-8 rounded-full bg-white text-jade-600 flex items-center justify-center shadow-lg border border-jade-100 text-xs pointer-events-none">
+                                        <i class="fa-solid fa-arrows-left-right"></i>
+                                    </div>
                                 </div>
                             </div>
                         @else
@@ -90,4 +92,79 @@
 
     </div>
 </section>
+
+<!-- Lógica y estilos del Slider Comparador Interactivo de Antes y Después -->
+<style>
+    .comparison-slider-container {
+        position: relative;
+    }
+    .slider-before-img {
+        max-width: none !important;
+    }
+</style>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const sliders = document.querySelectorAll('.comparison-slider-container');
+        
+        sliders.forEach(slider => {
+            const overlay = slider.querySelector('.slider-overlay');
+            const handle = slider.querySelector('.slider-handle');
+            const beforeImg = slider.querySelector('.slider-before-img');
+            
+            // Forzar ancho de la imagen de antes para que coincida exactamente con el contenedor
+            function adjustImageSize() {
+                beforeImg.style.width = slider.offsetWidth + 'px';
+                beforeImg.style.height = slider.offsetHeight + 'px';
+            }
+            
+            adjustImageSize();
+            window.addEventListener('resize', adjustImageSize);
+            
+            function move(clientX) {
+                const rect = slider.getBoundingClientRect();
+                const x = clientX - rect.left;
+                let position = (x / rect.width) * 100;
+                
+                if (position < 0) position = 0;
+                if (position > 100) position = 100;
+                
+                overlay.style.width = position + '%';
+                handle.style.left = position + '%';
+            }
+            
+            // Mouse Events
+            let isDragging = false;
+            
+            slider.addEventListener('mousedown', (e) => {
+                isDragging = true;
+                move(e.clientX);
+            });
+            
+            window.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                move(e.clientX);
+            });
+            
+            window.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            // Touch Events (Móviles y Tablets)
+            slider.addEventListener('touchstart', (e) => {
+                isDragging = true;
+                move(e.touches[0].clientX);
+            }, { passive: true });
+            
+            window.addEventListener('touchmove', (e) => {
+                if (!isDragging) return;
+                move(e.touches[0].clientX);
+            }, { passive: true });
+            
+            window.addEventListener('touchend', () => {
+                isDragging = false;
+            });
+        });
+    });
+</script>
 @endsection

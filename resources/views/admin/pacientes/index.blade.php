@@ -470,13 +470,19 @@
             <button onclick="toggleModal('modal-historial', false)" class="text-slate-400 hover:text-white"><i class="fa-solid fa-xmark text-lg"></i></button>
         </div>
 
-        <!-- Pestañas de Navegación -->
-        <div class="bg-slate-950/40 border-b border-vip-border flex px-6 space-x-4 flex-shrink-0">
-            <button id="tab-btn-evolucion" onclick="switchHistorialTab('evolucion')" class="py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-jade-500 text-jade-400 focus:outline-none">
+         <!-- Pestañas de Navegación -->
+        <div class="bg-slate-950/40 border-b border-vip-border flex px-6 space-x-4 overflow-x-auto flex-shrink-0">
+            <button id="tab-btn-evolucion" onclick="switchHistorialTab('evolucion')" class="py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-jade-500 text-jade-400 focus:outline-none flex-shrink-0">
                 📜 Notas de Evolución
             </button>
-            <button id="tab-btn-receta" onclick="switchHistorialTab('receta')" class="py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-white focus:outline-none">
+            <button id="tab-btn-receta" onclick="switchHistorialTab('receta')" class="py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-white focus:outline-none flex-shrink-0">
                 🩺 Recetario Digital
+            </button>
+            <button id="tab-btn-adjuntos" onclick="switchHistorialTab('adjuntos')" class="py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-white focus:outline-none flex-shrink-0">
+                📂 Radiografías y Adjuntos
+            </button>
+            <button id="tab-btn-consentimiento" onclick="switchHistorialTab('consentimiento')" class="py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-white focus:outline-none flex-shrink-0">
+                📑 Consentimiento Firmeable
             </button>
         </div>
 
@@ -536,6 +542,111 @@
                         </button>
                     </div>
                 </form>
+            </div>
+
+            <!-- SECCIÓN 3: ADJUNTOS Y RADIOGRAFÍAS (GESTOR DE ARCHIVOS) -->
+            <div id="historial-section-adjuntos" class="hidden space-y-6">
+                <!-- Dropzone de Arrastre -->
+                <div id="file-dropzone" class="border-2 border-dashed border-vip-border/80 hover:border-jade-500/80 bg-slate-900/20 hover:bg-slate-900/40 p-8 rounded-2xl flex flex-col items-center justify-center text-center cursor-pointer transition-all space-y-3">
+                    <div class="w-12 h-12 bg-jade-950/60 rounded-xl flex items-center justify-center text-jade-400 border border-jade-900/40">
+                        <i class="fa-solid fa-cloud-arrow-up text-xl"></i>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-sm font-bold text-white">Arrastra tus archivos aquí o haz clic para buscar</p>
+                        <p class="text-xs text-slate-500">Soporta Radiografías (.PNG, .JPG) e informes clínicos (.PDF) hasta 10MB</p>
+                    </div>
+                    <input type="file" id="dropzone-file-input" class="hidden" accept=".png,.jpg,.jpeg,.pdf">
+                </div>
+
+                <!-- Barra de Progreso Simulada de Subida -->
+                <div id="upload-progress-container" class="hidden bg-slate-900 p-4 rounded-xl border border-vip-border space-y-2">
+                    <div class="flex justify-between text-xs">
+                        <span id="uploading-file-name" class="font-bold text-slate-300">archivo.png</span>
+                        <span id="upload-percent" class="text-jade-400 font-bold">0%</span>
+                    </div>
+                    <div class="w-full h-2 bg-slate-800 rounded-full overflow-hidden">
+                        <div id="upload-progress-bar" class="h-full bg-jade-500 rounded-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <!-- Tabla de Adjuntos Clínicos -->
+                <div class="space-y-3">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Historial de Adjuntos</h4>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left text-xs">
+                            <thead>
+                                <tr class="text-slate-500 uppercase tracking-wider border-b border-vip-border/50">
+                                    <th class="py-2.5">Archivo / Radiografía</th>
+                                    <th class="py-2.5">Tipo</th>
+                                    <th class="py-2.5">Tamaño</th>
+                                    <th class="py-2.5">Fecha</th>
+                                    <th class="py-2.5 text-right">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="patient-files-tbody" class="divide-y divide-vip-border/20 text-slate-300">
+                                <tr class="hover:bg-slate-900/20 transition-all">
+                                    <td class="py-3 font-semibold text-white flex items-center space-x-2">
+                                        <i class="fa-solid fa-image text-jade-400"></i>
+                                        <span>Radiografia_Panoramica_Completa.jpg</span>
+                                    </td>
+                                    <td class="py-3 text-slate-400">Imagen RX</td>
+                                    <td class="py-3 text-slate-400">3.4 MB</td>
+                                    <td class="py-3 text-slate-400">12/04/2026</td>
+                                    <td class="py-3 text-right">
+                                        <button onclick="window.open('https://images.unsplash.com/photo-1579684389782-64d84b5e901d?auto=format&fit=crop&q=80&w=600', '_blank')" class="text-jade-400 hover:text-jade-300 font-bold mr-3"><i class="fa-solid fa-eye"></i> Ver</button>
+                                        <button onclick="this.closest('tr').remove()" class="text-rose-500 hover:text-rose-400 font-bold"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                                    </td>
+                                </tr>
+                                <tr class="hover:bg-slate-900/20 transition-all">
+                                    <td class="py-3 font-semibold text-white flex items-center space-x-2">
+                                        <i class="fa-solid fa-file-pdf text-rose-400"></i>
+                                        <span>Informe_Estudio_Oclusión_VIP.pdf</span>
+                                    </td>
+                                    <td class="py-3 text-slate-400">Informe PDF</td>
+                                    <td class="py-3 text-slate-400">1.2 MB</td>
+                                    <td class="py-3 text-slate-400">22/04/2026</td>
+                                    <td class="py-3 text-right">
+                                        <button onclick="alert('Abriendo documento PDF en modo lectura...')" class="text-jade-400 hover:text-jade-300 font-bold mr-3"><i class="fa-solid fa-eye"></i> Ver</button>
+                                        <button onclick="this.closest('tr').remove()" class="text-rose-500 hover:text-rose-400 font-bold"><i class="fa-solid fa-trash"></i> Eliminar</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4: CONSENTIMIENTO INFORMADO FIRMEABLE -->
+            <div id="historial-section-consentimiento" class="hidden space-y-6">
+                <div class="bg-slate-900/40 border border-vip-border/60 p-5 rounded-2xl space-y-4">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider"><i class="fa-solid fa-file-contract text-jade-500 mr-1.5"></i> Consentimiento de Tratamiento General</h4>
+                    
+                    <div class="h-40 overflow-y-auto bg-slate-950 p-4 rounded-xl border border-vip-border text-slate-400 text-xs leading-relaxed space-y-3">
+                        <p><strong>DECLARACIÓN DEL PACIENTE:</strong> Por la presente manifiesto libremente y con pleno conocimiento, que acepto el plan de tratamiento odontológico propuesto por la <strong>Dra. Pamela Miranda</strong> de la Clínica Miradent.</p>
+                        <p>He sido informado detalladamente sobre el diagnóstico, los procedimientos a realizar (incluyendo anestesia local si fuera necesaria), los costos asociados, los posibles riesgos colaterales y la importancia del cumplimiento estricto de las indicaciones médicas y farmacológicas post-tratamiento.</p>
+                        <p>Autorizo al personal clínico a realizar los exámenes auxiliares fotográficos, radiográficos y clínicos necesarios para el correcto seguimiento de mi caso estético o reconstructivo.</p>
+                    </div>
+
+                    <!-- Cuadro de Firma Táctil / Digital -->
+                    <div class="space-y-2">
+                        <label class="text-[11px] font-bold text-slate-400 uppercase tracking-wider flex justify-between">
+                            <span>Área de Firma del Paciente (Dibuja con el mouse o lápiz táctil)</span>
+                            <button onclick="clearSignatureCanvas()" class="text-[10px] text-rose-500 hover:text-rose-400 font-bold lowercase tracking-normal"><i class="fa-solid fa-eraser mr-1"></i> limpiar firma</button>
+                        </label>
+                        <div class="relative w-full h-40 bg-slate-950 border border-vip-border rounded-xl overflow-hidden cursor-crosshair">
+                            <canvas id="signature-canvas" class="w-full h-full absolute inset-0"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center pt-2">
+                        <span id="consent-status-badge" class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-950/60 text-amber-400 border border-amber-900/50 uppercase tracking-wider">
+                            <span class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-1.5 animate-pulse"></span> Pendiente de Firma
+                        </span>
+                        <button onclick="saveConsentimiento()" class="bg-jade-600 text-white px-5 py-2.5 rounded-xl text-xs font-bold hover:bg-jade-500 transition-all flex items-center space-x-2 shadow-lg">
+                            <i class="fa-solid fa-signature"></i> <span>Firmar y Guardar Documento</span>
+                        </button>
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -604,22 +715,191 @@
     }
 
     function switchHistorialTab(tab) {
-        const btnEvolucion = document.getElementById('tab-btn-evolucion');
-        const btnReceta = document.getElementById('tab-btn-receta');
-        const secEvolucion = document.getElementById('historial-section-evolucion');
-        const secReceta = document.getElementById('historial-section-receta');
+        const tabs = ['evolucion', 'receta', 'adjuntos', 'consentimiento'];
+        
+        tabs.forEach(t => {
+            const btn = document.getElementById(`tab-btn-${t}`);
+            const sec = document.getElementById(`historial-section-${t}`);
+            if (btn && sec) {
+                if (t === tab) {
+                    btn.className = "py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-jade-500 text-jade-400 focus:outline-none flex-shrink-0";
+                    sec.classList.remove('hidden');
+                } else {
+                    btn.className = "py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-white focus:outline-none flex-shrink-0";
+                    sec.classList.add('hidden');
+                }
+            }
+        });
 
-        if (tab === 'evolucion') {
-            btnEvolucion.className = "py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-jade-500 text-jade-400 focus:outline-none";
-            btnReceta.className = "py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-white focus:outline-none";
-            secEvolucion.classList.remove('hidden');
-            secReceta.classList.add('hidden');
-        } else {
-            btnReceta.className = "py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-jade-500 text-jade-400 focus:outline-none";
-            btnEvolucion.className = "py-3 text-xs font-bold uppercase tracking-wider border-b-2 border-transparent text-slate-400 hover:text-white focus:outline-none";
-            secReceta.classList.remove('hidden');
-            secEvolucion.classList.add('hidden');
+        // Inicializar firma si es la pestaña consentimiento
+        if (tab === 'consentimiento') {
+            setTimeout(initSignatureCanvas, 150);
         }
+    }
+
+    // --- LÓGICA DE GESTIÓN DE ARCHIVOS (DRAG & DROP) ---
+    document.addEventListener('DOMContentLoaded', () => {
+        const dropzone = document.getElementById('file-dropzone');
+        const fileInput = document.getElementById('dropzone-file-input');
+        
+        if (dropzone && fileInput) {
+            dropzone.addEventListener('click', () => fileInput.click());
+            
+            dropzone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                dropzone.classList.add('border-jade-500', 'bg-slate-900/60');
+            });
+            
+            dropzone.addEventListener('dragleave', () => {
+                dropzone.classList.remove('border-jade-500', 'bg-slate-900/60');
+            });
+            
+            dropzone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                dropzone.classList.remove('border-jade-500', 'bg-slate-900/60');
+                if (e.dataTransfer.files.length) {
+                    handleFileSelect(e.dataTransfer.files[0]);
+                }
+            });
+            
+            fileInput.addEventListener('change', () => {
+                if (fileInput.files.length) {
+                    handleFileSelect(fileInput.files[0]);
+                }
+            });
+        }
+    });
+
+    function handleFileSelect(file) {
+        const progressContainer = document.getElementById('upload-progress-container');
+        const progressName = document.getElementById('uploading-file-name');
+        const progressPercent = document.getElementById('upload-percent');
+        const progressBar = document.getElementById('upload-progress-bar');
+        
+        progressContainer.classList.remove('hidden');
+        progressName.innerText = file.name;
+        
+        let percent = 0;
+        const interval = setInterval(() => {
+            percent += 20;
+            progressPercent.innerText = `${percent}%`;
+            progressBar.style.width = `${percent}%`;
+            
+            if (percent >= 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    progressContainer.classList.add('hidden');
+                    addFileToTable(file.name, (file.size / (1024 * 1024)).toFixed(1));
+                }, 400);
+            }
+        }, 150);
+    }
+
+    function addFileToTable(name, size) {
+        const tbody = document.getElementById('patient-files-tbody');
+        const today = new Date().toLocaleDateString('es-PE');
+        const isPdf = name.toLowerCase().endsWith('.pdf');
+        const icon = isPdf ? 'fa-file-pdf text-rose-400' : 'fa-image text-jade-400';
+        const type = isPdf ? 'Informe PDF' : 'Imagen RX';
+        
+        const row = document.createElement('tr');
+        row.className = "hover:bg-slate-900/20 transition-all";
+        row.innerHTML = `
+            <td class="py-3 font-semibold text-white flex items-center space-x-2">
+                <i class="fa-solid ${icon}"></i>
+                <span>${name}</span>
+            </td>
+            <td class="py-3 text-slate-400">${type}</td>
+            <td class="py-3 text-slate-400">${size} MB</td>
+            <td class="py-3 text-slate-400">${today}</td>
+            <td class="py-3 text-right">
+                <button onclick="alert('Abriendo documento cargado...')" class="text-jade-400 hover:text-jade-300 font-bold mr-3"><i class="fa-solid fa-eye"></i> Ver</button>
+                <button onclick="this.closest('tr').remove()" class="text-rose-500 hover:text-rose-400 font-bold"><i class="fa-solid fa-trash"></i> Eliminar</button>
+            </td>
+        `;
+        tbody.prepend(row);
+    }
+
+    // --- LÓGICA DE FIRMA TÁCTIL (CANVAS) ---
+    let canvas, ctx, drawing = false;
+
+    function initSignatureCanvas() {
+        canvas = document.getElementById('signature-canvas');
+        if (!canvas) return;
+        
+        ctx = canvas.getContext('2d');
+        
+        // Ajustar tamaño real del canvas al tamaño del contenedor
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        
+        ctx.strokeStyle = '#00BB77'; // Jade de Miradent
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        
+        // Mouse Listeners
+        canvas.addEventListener('mousedown', startDrawing);
+        canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('mouseup', stopDrawing);
+        canvas.addEventListener('mouseleave', stopDrawing);
+        
+        // Touch Listeners (Tablet/Celular)
+        canvas.addEventListener('touchstart', (e) => {
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousedown', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }, { passive: true });
+        
+        canvas.addEventListener('touchmove', (e) => {
+            const touch = e.touches[0];
+            const mouseEvent = new MouseEvent('mousemove', {
+                clientX: touch.clientX,
+                clientY: touch.clientY
+            });
+            canvas.dispatchEvent(mouseEvent);
+        }, { passive: true });
+        
+        canvas.addEventListener('touchend', () => {
+            const mouseEvent = new MouseEvent('mouseup', {});
+            canvas.dispatchEvent(mouseEvent);
+        }, { passive: true });
+    }
+
+    function startDrawing(e) {
+        drawing = true;
+        ctx.beginPath();
+        const rect = canvas.getBoundingClientRect();
+        ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+    }
+
+    function draw(e) {
+        if (!drawing) return;
+        const rect = canvas.getBoundingClientRect();
+        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+        ctx.stroke();
+    }
+
+    function stopDrawing() {
+        drawing = false;
+    }
+
+    function clearSignatureCanvas() {
+        if (ctx && canvas) {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            document.getElementById('consent-status-badge').className = "inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-amber-950/60 text-amber-400 border border-amber-900/50 uppercase tracking-wider";
+            document.getElementById('consent-status-badge').innerHTML = '<span class="w-1.5 h-1.5 bg-amber-400 rounded-full mr-1.5 animate-pulse"></span> Pendiente de Firma';
+        }
+    }
+
+    function saveConsentimiento() {
+        const badge = document.getElementById('consent-status-badge');
+        badge.className = "inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-950/60 text-emerald-400 border border-emerald-900/60 uppercase tracking-wider";
+        badge.innerHTML = '<i class="fa-solid fa-circle-check mr-1.5"></i> Firmado Digitalmente';
+        alert('¡Consentimiento firmado digitalmente por el paciente y archivado de forma segura en la ficha de Miradent!');
     }
 
     function loadEvolucionNotes() {
