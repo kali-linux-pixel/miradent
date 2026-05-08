@@ -454,8 +454,6 @@
         }
     }
 </script>
-    }
-</script>
 
 <!-- MODAL HISTORIAL CLÍNICO Y RECETARIO DIGITAL -->
 <div id="modal-historial" class="hidden fixed inset-0 z-50 overflow-y-auto bg-slate-950/80 backdrop-blur-sm flex items-center justify-center p-4">
