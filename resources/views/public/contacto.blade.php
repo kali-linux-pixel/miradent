@@ -146,7 +146,7 @@
 
                 <!-- Mapa elegante -->
                 <div class="rounded-3xl overflow-hidden shadow-lg border border-jade-50 aspect-[16/9] bg-slate-50 relative">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m13!1d15602.585501306354!2d-77.03713914841968!3d-12.12213941421045!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c81607cd1b51%3A0x7d6a5c1813459c5d!2sMiraflores%2C%20Lima%2C%20Peru!5e0!3m2!1sen!2spe!4v1715132213421" class="w-full h-full border-none" allowfullscreen="" loading="lazy"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d31215.18485233285!2d-77.06206069999998!3d-12.046374!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c866d92994e7%3A0x63351913c32e578!2sLima!5e0!3m2!1ses-419!2spe!4v1715130456123!5m2!1ses-419!2spe" class="w-full h-full border-none" allowfullscreen="" loading="lazy"></iframe>
                 </div>
             </div>
 
