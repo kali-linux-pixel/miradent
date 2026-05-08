@@ -468,6 +468,45 @@
                 </div>
             </a>
         </div>
+
+        <!-- Meta Mensual de Facturación VIP -->
+        <div class="mt-6 pt-6 border-t border-vip-border/50 space-y-4">
+            <div class="flex justify-between items-center">
+                <h5 class="text-xs font-bold text-slate-400 uppercase tracking-widest"><i class="fa-solid fa-bullseye text-jade-500 mr-1.5"></i> Meta de Facturación</h5>
+                <span class="text-xs font-bold text-jade-500">
+                    @php
+                        $metaMensual = 12000;
+                        $porcentajeMeta = min(round(($totalRecaudado / $metaMensual) * 100), 100);
+                    @endphp
+                    {{ $porcentajeMeta }}% Logrado
+                </span>
+            </div>
+            
+            <!-- Barra de Progreso Avanzada con Brillo -->
+            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden relative border border-slate-200/50">
+                <div class="h-full bg-gradient-to-r from-jade-400 to-jade-600 rounded-full transition-all duration-1000 ease-out" style="width: {{ $porcentajeMeta }}%"></div>
+            </div>
+
+            <div class="flex justify-between text-[11px] text-slate-500 font-medium">
+                <span>Actual: S/. {{ number_format($totalRecaudado, 2) }}</span>
+                <span>Objetivo: S/. {{ number_format($metaMensual, 2) }}</span>
+            </div>
+
+            <div class="bg-jade-50/50 border border-jade-100 p-3.5 rounded-2xl flex items-start space-x-2.5">
+                <div class="text-base">✨</div>
+                <p class="text-[10px] text-jade-900 leading-relaxed">
+                    @if($porcentajeMeta >= 100)
+                        <strong>¡Felicidades Dra. Pamela!</strong> Ha superado la meta de facturación mensual establecida. ¡El crecimiento de Miradent es imparable!
+                    @elseif($porcentajeMeta >= 75)
+                        ¡Excelente ritmo de trabajo! Está a solo unos pocos tratamientos de coronar la meta mensual de la clínica.
+                    @elseif($porcentajeMeta >= 50)
+                        Va a mitad de camino del objetivo mensual. ¡Un par de limpiezas y carillas estéticas adicionales y lo conseguirá!
+                    @else
+                        Iniciando el ciclo mensual con fuerza. ¡Cada sonrisa diseñada nos acerca un paso más al objetivo!
+                    @endif
+                </p>
+            </div>
+        </div>
     </div>
 
 </div>
