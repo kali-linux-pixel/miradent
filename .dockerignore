@@ -1,0 +1,11 @@
+/vendor
+/node_modules
+.env
+.git
+/public/storage
+/storage/*.key
+/bootstrap/cache/*
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/views/*
+/storage/logs/*
