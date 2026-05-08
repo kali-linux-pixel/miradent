@@ -55,20 +55,20 @@
             color: #002f1e !important;
         }
         
-        /* Sidebar de Lujo - Verde Jade Intenso */
+        /* Sidebar de Lujo - Blanco Puro y Verde Jade */
         aside {
-            background-color: #002f1e !important;
-            border-right: 1px solid #004d32 !important;
+            background-color: #ffffff !important;
+            border-right: 1px solid #cdfae9 !important;
         }
         aside span, aside h5, aside h2 {
-            color: #e6fcf4 !important;
+            color: #002f1e !important;
         }
         aside p[class*="tracking-widest"] {
-            color: #37eba5 !important;
+            color: #00BB77 !important;
             font-weight: 800 !important;
-            font-size: 9px !important;
+            font-size: 10px !important;
             letter-spacing: 0.15em !important;
-            border-bottom: 1px solid rgba(0, 77, 50, 0.35) !important;
+            border-bottom: 1px solid #e6fcf4 !important;
             padding-bottom: 6px !important;
             margin-top: 1.5rem !important;
             opacity: 0.85 !important;
@@ -76,23 +76,23 @@
         
         /* Links inactivos en el Sidebar */
         aside nav a {
-            color: #cdfae9 !important;
+            color: #005d3c !important;
             border-left: 3px solid transparent !important;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
         }
         aside nav a:hover {
-            background-color: rgba(0, 77, 50, 0.45) !important;
-            color: #37eba5 !important;
+            background-color: #e6fcf4 !important;
+            color: #00BB77 !important;
             border-left-color: #00BB77 !important;
-            padding-left: 1rem !important;
+            padding-left: 1.25rem !important;
         }
         
-        /* Link activo en el Sidebar - Verde Jade Brillante con Brillo de Neón */
+        /* Link activo en el Sidebar - Verde Jade */
         aside nav a[class*="bg-jade-950"] {
-            background: linear-gradient(135deg, #00BB77 0%, #008f5a 100%) !important;
+            background: linear-gradient(135deg, #00BB77 0%, #00a368 100%) !important;
             color: #FFFFFF !important;
-            border-left: 4px solid #37eba5 !important;
-            box-shadow: 0 4px 20px -2px rgba(0, 187, 119, 0.45) !important;
+            border-left: 4px solid #00BB77 !important;
+            box-shadow: 0 4px 15px -2px rgba(0, 187, 119, 0.2) !important;
             font-weight: 700 !important;
             transform: translateX(4px) !important;
         }
@@ -347,9 +347,9 @@
 <body class="font-sans h-full text-slate-700 flex overflow-hidden bg-white">
 
     <!-- SIDEBAR -->
-    <aside class="hidden lg:flex flex-col w-64 bg-vip-slate border-r border-vip-border flex-shrink-0">
+    <aside class="hidden lg:flex flex-col w-64 bg-white border-r border-[#cdfae9] flex-shrink-0">
         <!-- Logo Header -->
-        <div class="h-20 flex items-center px-6 border-b border-vip-border">
+        <div class="h-20 flex items-center px-6 border-b border-[#cdfae9]">
             <a href="{{ route('inicio') }}" class="flex items-center">
                 <img src="{{ asset('img/logo.png') }}" class="h-12 w-auto object-contain" alt="Miradent Logo">
             </a>
@@ -405,15 +405,14 @@
             </a>
         </nav>
 
-        <!-- Doctor Profile Footer -->
-        <div class="p-4 border-t border-vip-border bg-slate-950/40">
+        <div class="p-4 border-t border-[#cdfae9] bg-[#e6fcf4]/30">
             <div class="flex items-center space-x-3 px-2 py-1.5 rounded-xl">
-                <div class="doctor-avatar-container w-9 h-9 rounded-full bg-jade-800 flex items-center justify-center text-white font-bold text-sm relative">
+                <div class="doctor-avatar-container w-9 h-9 rounded-full bg-[#00BB77] flex items-center justify-center text-white font-bold text-sm relative">
                     DM
                 </div>
                 <div>
-                    <h5 class="text-xs font-semibold text-white">Dra. Miradent</h5>
-                    <p class="text-[10px] text-slate-400">Administrador</p>
+                    <h5 class="text-xs font-semibold text-[#002f1e]">Dra. Miradent</h5>
+                    <p class="text-[10px] text-[#005d3c] font-medium">Administrador</p>
                 </div>
             </div>
         </div>
@@ -422,7 +421,7 @@
     <!-- ÁREA DE CONTENIDO -->
     <div class="flex-grow flex flex-col min-w-0 overflow-hidden">
         <!-- TOP NAVBAR -->
-        <header class="h-20 bg-vip-slate border-b border-vip-border flex items-center justify-between px-6 lg:px-8">
+        <header class="h-20 bg-white border-b border-[#cdfae9] flex items-center justify-between px-6 lg:px-8">
             <div class="flex items-center space-x-4">
                 <!-- Botón móvil -->
                 <button id="sidebar-toggle" class="lg:hidden text-slate-400 hover:text-white focus:outline-none p-1">

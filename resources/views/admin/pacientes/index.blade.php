@@ -20,7 +20,7 @@
         <span class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none text-slate-500">
             <i class="fa-solid fa-magnifying-glass text-sm"></i>
         </span>
-        <input type="text" id="pacientes-search" onkeyup="searchPacientes()" class="w-full bg-slate-900 border border-vip-border/60 text-slate-300 text-sm rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:border-jade-600 focus:ring-1 focus:ring-jade-600 transition-all" placeholder="Buscar por nombre...">
+        <input type="text" id="pacientes-search" onkeyup="searchPacientes()" class="w-full bg-white border border-[#cdfae9] text-[#002f1e] text-sm rounded-xl pl-10 pr-4 py-2.5 focus:outline-none focus:border-[#00BB77] focus:ring-1 focus:ring-[#00BB77] transition-all" placeholder="Buscar por nombre...">
     </div>
 
     @if($pacientes->isEmpty())
@@ -42,36 +42,42 @@
                         <th class="px-4 py-3 text-right">Acciones</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-vip-border/20">
+                <tbody class="divide-y divide-[#e6fcf4]/50">
                     @foreach($pacientes as $paciente)
-                        <tr class="hover:bg-slate-900/10 transition-all">
-                            <td class="px-4 py-4 font-bold text-white max-w-[180px] truncate">
+                        <tr class="hover:bg-[#e6fcf4]/30 transition-all">
+                            <td class="px-4 py-4 font-bold text-[#002f1e] max-w-[180px] truncate">
                                 {{ $paciente->nombre }}
                             </td>
-                            <td class="px-4 py-4 text-xs text-slate-300">
+                            <td class="px-4 py-4 text-xs text-[#005d3c] font-medium">
                                 {{ $paciente->edad }} años
                             </td>
-                            <td class="px-4 py-4 text-xs text-slate-300">
+                            <td class="px-4 py-4 text-xs text-[#005d3c] font-medium">
                                 {{ $paciente->telefono }}
                             </td>
-                            <td class="px-4 py-4 text-xs truncate max-w-[200px]">
+                            <td class="px-4 py-4 text-xs text-slate-600 truncate max-w-[200px]">
                                 {{ $paciente->direccion }}
                             </td>
                             <td class="px-4 py-4 text-xs">
                                 @if($paciente->alergico)
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-950/40 text-rose-400 border border-rose-900/50">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-rose-50 text-rose-600 border border-rose-200 shadow-sm">
                                         <i class="fa-solid fa-triangle-exclamation mr-1 animate-pulse"></i> SÍ
                                     </span>
                                 @else
-                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-emerald-950/40 text-emerald-400 border border-emerald-900/50">
+                                    <span class="inline-flex items-center px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#e6fcf4] text-[#00BB77] border border-[#cdfae9] shadow-sm">
                                         <i class="fa-solid fa-circle-check mr-1"></i> NO
                                     </span>
                                 @endif
                             </td>
                             <td class="px-4 py-4 text-xs max-w-[150px] truncate">
-                                <span class="px-2 py-0.5 rounded {{ $paciente->alergias ? 'bg-red-950/30 text-red-400 border border-red-900/30' : 'bg-slate-900 text-slate-500' }}">
-                                    {{ $paciente->alergias ?? 'Ninguna' }}
-                                </span>
+                                @if($paciente->alergias)
+                                    <span class="px-2.5 py-1 rounded-full font-semibold text-rose-600 bg-rose-50 border border-rose-200">
+                                        {{ $paciente->alergias }}
+                                    </span>
+                                @else
+                                    <span class="px-2.5 py-1 rounded-full font-semibold text-[#00BB77] bg-[#e6fcf4] border border-[#cdfae9]">
+                                        Ninguna
+                                    </span>
+                                @endif
                             </td>
                             <td class="px-4 py-4 text-right space-x-2">
                                 <!-- Botón Odontograma -->
