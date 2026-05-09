@@ -57,3 +57,14 @@ Route::middleware(['auth'])->prefix('admin')->group(function () {
     // Copia de Seguridad DB (1-Clic Backup)
     Route::get('/backup', [AdminController::class, 'downloadBackup'])->name('admin.backup');
 });
+
+// Ruta de utilidad para correr migraciones y seeders en Render con Supabase
+Route::get('/run-migrations', function () {
+    try {
+        \Illuminate\Support\Facades\Artisan::call('migrate', ['--force' => true]);
+        \Illuminate\Support\Facades\Artisan::call('db:seed', ['--force' => true]);
+        return "<h3>¡Base de datos migrada y populada con éxito en Supabase!</h3><pre>" . \Illuminate\Support\Facades\Artisan::output() . "</pre>";
+    } catch (\Exception $e) {
+        return "Error ejecutando migraciones: " . $e->getMessage();
+    }
+});
