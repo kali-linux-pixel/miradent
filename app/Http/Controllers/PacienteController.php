@@ -30,7 +30,7 @@ class PacienteController extends Controller
         ]);
 
         $data = $request->all();
-        $data['alergico'] = $request->has('alergico') ? 1 : 0;
+        $data['alergico'] = ($request->input('alergico') == '1') ? 1 : 0;
 
         Paciente::create($data);
 
@@ -53,7 +53,7 @@ class PacienteController extends Controller
         $paciente = Paciente::findOrFail($id);
         
         $data = $request->all();
-        $data['alergico'] = $request->has('alergico') ? 1 : 0;
+        $data['alergico'] = ($request->input('alergico') == '1') ? 1 : 0;
 
         $paciente->update($data);
 
