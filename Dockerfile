@@ -7,6 +7,7 @@ RUN apt-get update && apt-get install -y \
     libjpeg-dev \
     libfreetype6-dev \
     libzip-dev \
+    libpq-dev \
     zip \
     unzip \
     git \
@@ -14,7 +15,7 @@ RUN apt-get update && apt-get install -y \
     && curl -fsSL https://deb.nodesource.com/setup_20.x | bash - \
     && apt-get install -y nodejs \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd zip pdo pdo_mysql \
+    && docker-php-ext-install gd zip pdo pdo_mysql pdo_pgsql \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Habilitar mod_rewrite para Laravel en Apache
